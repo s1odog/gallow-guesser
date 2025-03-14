@@ -11,16 +11,17 @@ script = ExtResource("1_m3jw7")
 
 [node name="Game_title_gallow_guesser" type="Label" parent="."]
 layout_mode = 0
-offset_left = 535.0
-offset_top = 279.0
-offset_right = 655.0
-offset_bottom = 302.0
+offset_left = 367.0
+offset_top = 150.0
+offset_right = 487.0
+offset_bottom = 186.0
 text = "Gallow Guesser"
 vertical_alignment = 1
 
 [node name="Hangman_sprite" type="Sprite2D" parent="."]
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 60.0
 
 [node name="drop_down_menu_button" type="OptionButton" parent="."]
 layout_mode = 0
@@ -59,3 +60,58 @@ grow_horizontal = 2
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
+
+[node name="ButtonContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="GameModesContainer" type="HBoxContainer" parent="ButtonContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="NormalModeButton" type="Button" parent="ButtonContainer/GameModesContainer"]
+layout_mode = 2
+text = "Normal Mode"
+
+[node name="TimedModeButton" type="Button" parent="ButtonContainer/GameModesContainer"]
+layout_mode = 2
+text = "Timed Mode"
+
+[node name="DifficultiesContainer" type="GridContainer" parent="ButtonContainer"]
+layout_mode = 2
+columns = 5
+
+[node name="TwoBraincellsButton" type="Button" parent="ButtonContainer/DifficultiesContainer"]
+layout_mode = 2
+text = "2 Braincells"
+
+[node name="NoobButton" type="Button" parent="ButtonContainer/DifficultiesContainer"]
+layout_mode = 2
+text = "Noob"
+
+[node name="MediumButton" type="Button" parent="ButtonContainer/DifficultiesContainer"]
+layout_mode = 2
+text = "Medium"
+
+[node name="VeteranButton" type="Button" parent="ButtonContainer/DifficultiesContainer"]
+layout_mode = 2
+text = "Veteran"
+
+[node name="TwoHundredIQButton" type="Button" parent="ButtonContainer/DifficultiesContainer"]
+layout_mode = 2
+text = "200 IQ"
+
+[node name="timer_label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="ButtonContainer/GameModesContainer/NormalModeButton" to="." method="_on_normal_mode_pressed"]
+[connection signal="pressed" from="ButtonContainer/GameModesContainer/TimedModeButton" to="." method="_on_timed_mode_pressed"]
+[connection signal="pressed" from="ButtonContainer/DifficultiesContainer/TwoBraincellsButton" to="." method="_on_2braincells_button_pressed"]
+[connection signal="pressed" from="ButtonContainer/DifficultiesContainer/NoobButton" to="." method="_on_noob_button_pressed"]
+[connection signal="pressed" from="ButtonContainer/DifficultiesContainer/MediumButton" to="." method="_on_medium_button_pressed"]
+[connection signal="pressed" from="ButtonContainer/DifficultiesContainer/VeteranButton" to="." method="_on_veteran_button_pressed"]
+[connection signal="pressed" from="ButtonContainer/DifficultiesContainer/TwoHundredIQButton" to="." method="_on_200iq_button_pressed"]
