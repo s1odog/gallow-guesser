@@ -1,0 +1,252 @@
+[gd_scene load_steps=12 format=3 uid="uid://culdfuk2t3ggq"]
+
+[ext_resource type="Script" path="res://hangman.gd" id="1_m3jw7"]
+[ext_resource type="Theme" uid="uid://ddkqlp6yjfc8f" path="res://control_theme.tres" id="1_t2bcp"]
+[ext_resource type="StyleBox" uid="uid://cp1lydptxnx8r" path="res://single_box_style_hover.tres" id="3_jkpmk"]
+[ext_resource type="StyleBox" uid="uid://brxevdo2nuem4" path="res://single_box_style_pressed.tres" id="4_brgeq"]
+[ext_resource type="StyleBox" path="res://single_box_style.tres" id="5_x7hhm"]
+[ext_resource type="StyleBox" uid="uid://7qm2xdke6vtt" path="res://mult_box_style_hover.tres" id="6_dqj1d"]
+[ext_resource type="StyleBox" uid="uid://dbr7xp5smdmdt" path="res://mult_box_style_pressed.tres" id="7_y7ueo"]
+[ext_resource type="StyleBox" uid="uid://ctqvc8b5x7w4w" path="res://mult_box_style.tres" id="8_ddh8p"]
+[ext_resource type="StyleBox" uid="uid://dlta8rr8qrjj0" path="res://play_box_style_hover.tres" id="9_6vgrb"]
+[ext_resource type="StyleBox" uid="uid://cwwv5jtlh7gd5" path="res://play_box_style_pressed.tres" id="10_hrhkx"]
+[ext_resource type="StyleBox" uid="uid://fkyh4x25vom" path="res://play_box_style.tres" id="11_xp785"]
+
+[node name="Control_gallow_guesser" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_top = -4.0
+offset_right = 40.0
+offset_bottom = 36.0
+theme = ExtResource("1_t2bcp")
+script = ExtResource("1_m3jw7")
+
+[node name="Game_title_gallow_guesser" type="Label" parent="."]
+layout_mode = 0
+offset_left = 277.0
+offset_top = 85.0
+offset_right = 551.0
+offset_bottom = 137.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 51
+text = "Gallow Guesser"
+vertical_alignment = 1
+
+[node name="Hangman_sprite" type="Sprite2D" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 60.0
+
+[node name="drop_down_menu_button" type="OptionButton" parent="."]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 20.0
+
+[node name="alphabet_button" type="Button" parent="."]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="attempts_left" type="Label" parent="."]
+layout_mode = 0
+offset_left = 762.0
+offset_top = 535.0
+offset_right = 802.0
+offset_bottom = 558.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+
+[node name="GridContainer_letters" type="HBoxContainer" parent="."]
+layout_direction = 2
+layout_mode = 0
+offset_left = 269.0
+offset_top = 568.0
+offset_right = 277.0
+offset_bottom = 608.0
+
+[node name="letter(s)" type="Button" parent="GridContainer_letters"]
+layout_mode = 2
+
+[node name="WordContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 298.0
+offset_top = 522.0
+offset_right = 298.0
+offset_bottom = 522.0
+grow_horizontal = 2
+
+[node name="game_over_label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+
+[node name="GameModesContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+offset_left = 34.0
+offset_top = 137.0
+offset_right = 212.0
+offset_bottom = 168.0
+alignment = 1
+
+[node name="NormalModeButton" type="Button" parent="GameModesContainer"]
+layout_mode = 2
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_styles/hover = ExtResource("9_6vgrb")
+theme_override_styles/pressed = ExtResource("10_hrhkx")
+theme_override_styles/normal = ExtResource("11_xp785")
+text = "Normal Mode"
+
+[node name="TimedModeButton" type="Button" parent="GameModesContainer"]
+layout_mode = 2
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_styles/hover = ExtResource("9_6vgrb")
+theme_override_styles/pressed = ExtResource("10_hrhkx")
+theme_override_styles/normal = ExtResource("11_xp785")
+text = "Timed Mode"
+
+[node name="DifficultiesContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+offset_left = 268.0
+offset_top = 138.0
+offset_right = 390.0
+offset_bottom = 277.0
+
+[node name="TwoBraincellsCheckBox" type="CheckBox" parent="DifficultiesContainer"]
+layout_mode = 2
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0.242501, 0.24387, 0.256902, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+text = "2 Braincells"
+
+[node name="NoobCheckBox" type="CheckBox" parent="DifficultiesContainer"]
+layout_mode = 2
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0.242501, 0.24387, 0.256902, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+text = "Noob"
+
+[node name="MediumCheckBox" type="CheckBox" parent="DifficultiesContainer"]
+layout_mode = 2
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0.242501, 0.24387, 0.256902, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+text = "Medium"
+
+[node name="VeteranCheckBox" type="CheckBox" parent="DifficultiesContainer"]
+layout_mode = 2
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0.242501, 0.24387, 0.256902, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+text = "Veteran"
+
+[node name="TwoHundredIQCheckBox" type="CheckBox" parent="DifficultiesContainer"]
+layout_mode = 2
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0.242501, 0.24387, 0.256902, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+text = "200 IQ"
+
+[node name="timer_label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Play_Single_Multi_Container" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 465.0
+offset_top = 162.0
+offset_right = 668.0
+offset_bottom = 214.0
+
+[node name="Single_Multi_Container" type="HBoxContainer" parent="Play_Single_Multi_Container"]
+layout_mode = 2
+
+[node name="SinglePlayerButton" type="Button" parent="Play_Single_Multi_Container/Single_Multi_Container"]
+layout_mode = 2
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 22
+theme_override_styles/hover = ExtResource("3_jkpmk")
+theme_override_styles/pressed = ExtResource("4_brgeq")
+theme_override_styles/normal = ExtResource("5_x7hhm")
+text = "Single Player"
+
+[node name="OfflineMultiplayerButton" type="Button" parent="Play_Single_Multi_Container/Single_Multi_Container"]
+layout_mode = 2
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 22
+theme_override_styles/hover = ExtResource("6_dqj1d")
+theme_override_styles/pressed = ExtResource("7_y7ueo")
+theme_override_styles/normal = ExtResource("8_ddh8p")
+text = "Offline Multiplayer"
+
+[node name="PlayButton" type="Button" parent="Play_Single_Multi_Container"]
+layout_mode = 2
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+theme_override_styles/hover = ExtResource("9_6vgrb")
+theme_override_styles/pressed = ExtResource("10_hrhkx")
+theme_override_styles/normal = ExtResource("11_xp785")
+text = "PLAY"
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="GameModesContainer/NormalModeButton" to="." method="_on_normal_mode_pressed"]
+[connection signal="pressed" from="GameModesContainer/TimedModeButton" to="." method="_on_timed_mode_pressed"]
+[connection signal="toggled" from="DifficultiesContainer/TwoBraincellsCheckBox" to="." method="_on_2braincells_checkbox_toggled"]
+[connection signal="toggled" from="DifficultiesContainer/NoobCheckBox" to="." method="_on_noob_checkbox_toggled"]
+[connection signal="toggled" from="DifficultiesContainer/MediumCheckBox" to="." method="_on_medium_checkbox_toggled"]
+[connection signal="toggled" from="DifficultiesContainer/VeteranCheckBox" to="." method="_on_veteran_checkbox_toggled"]
+[connection signal="toggled" from="DifficultiesContainer/TwoHundredIQCheckBox" to="." method="_on_200iq_checkbox_toggled"]
+[connection signal="pressed" from="Play_Single_Multi_Container/PlayButton" to="." method="_on_play_button_pressed"]

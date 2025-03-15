@@ -1,0 +1,6 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://ddkqlp6yjfc8f"]
+
+[ext_resource type="FontFile" uid="uid://dp7vee3w6g27k" path="res://komiko-font/Komiko-vY74.ttf" id="1_pdvs0"]
+
+[resource]
+default_font = ExtResource("1_pdvs0")
