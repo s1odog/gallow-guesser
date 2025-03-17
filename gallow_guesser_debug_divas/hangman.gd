@@ -7,6 +7,7 @@ extends Control
 @onready var timer = $Timer  # Timer
 @onready var timer_label = $timer_label  # Timer abel
 @onready var game_over_label = $game_over_label  # Label to display win/lose message
+var game_mode = "Timed"
 
 
 # Game variables
@@ -34,6 +35,7 @@ func _ready():
 	attempts_label.position = Vector2(50, 10)  # Position of attempts label
 	word_container.position = Vector2(200, 400)  # Position of word container
 	game_over_label.position = Vector2(400, 400)  # Position of game over label
+	timer_label.position = Vector2(800, 50)
 	
 func show_mode_selection():
 	# Show mode selection buttons
@@ -54,7 +56,7 @@ func show_mode_selection():
 	timer.stop()
 	
 	
-var game_mode = "Normal"  # Default to normal mode
+
 
 func _on_normal_mode_pressed():
 	game_mode = "Normal"
@@ -66,10 +68,12 @@ func _on_timed_mode_pressed():
 	
 var time_left = 60  # Timer in seconds
 
-func _on_Timer_timeout():
+func _on_timer_timeout():
 	if game_mode == "Timed":
+		timer_label.z_index = 10
 		time_left -= 1
 		timer_label.text = str(time_left)  # Update timer label
+		timer_label.visible = true
 		if time_left <= 0:
 			game_over("lose")  # Trigger game over when time runs out
 
@@ -93,6 +97,10 @@ func show_difficulty_selection():
 
 
 func start_game():
+	
+	if game_mode != "Timed":
+		return
+	
 	if selected_mode in word_to_guess:
 		var words_list = word_to_guess[selected_mode]  # Get the list of words
 		chosen_word = words_list[randi() % words_list.size()]  # Pick a random word
@@ -118,16 +126,15 @@ func start_game():
 		letters_container.add_child(button)
 		letter_buttons[letter] = button  # Store reference
 
-		
-	# Starts the timer if Timed Mode is selected
-	if game_mode == "Timed":
-		time_left = 60  # Reset the timer to 60 seconds at the start of the game
-		timer_label.show()
-		timer_label.visible = true  # Make sure the timer label is visible
-		timer.wait_time = 1
-		timer.start()  # Start the countdown timer
-	else:
-		timer.stop()  # No timer in Normal Mode
+	timer_label.text = str(time_left)
+	
+
+
+	time_left = 60  # Reset the timer to 60 seconds at the start of the game
+	timer_label.show()
+	timer_label.visible = true  # Make sure the timer label is visible
+	timer.wait_time = 1
+	timer.start()  # Start the countdown timer
 	
 	# Hide difficulty selection and show game UI
 	$ButtonContainer/DifficultiesContainer/TwoBraincellsButton.visible = false
@@ -224,8 +231,3 @@ func game_over(result):
 		child.disabled = true
 	timer.stop()
 	game_over_label.visible = true
-
-
-
-func _on_timer_timeout() -> void:
-	pass # Replace with function body.
